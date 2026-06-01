@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>slides</title>
+  <title>slides-with-biblio</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -18,11 +18,8 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
+    ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -48,24 +45,6 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/serif.css" id="theme">
-  <script defer=""
-  src="/usr/share/javascript/katex/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet"
-  href="/usr/share/javascript/katex/katex.min.css" />
   <button id="nav-btn" onclick="toggleNavMenu()" title="Open Slide List">📋 MENU</button>
 
   <div id="nav-menu">
@@ -639,7 +618,7 @@ style="position: absolute; bottom: 40px; right: 20px; font-size: 0.6em; opacity:
 <h3 id="slide-one">Slide one</h3>
 <p><strong>Key Concepts:</strong> - Energy conservation per <span
 class="citation" data-cites="carnot1824">(1)</span>. - <span
-class="math inline">\Delta U = Q - W</span></p>
+class="math inline">\(\Delta U = Q - W\)</span></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="media/pics/sample.png" /></p>
 </div>
@@ -657,9 +636,9 @@ data-title="My Hidden Slide Name"></span></p>
 <div class="column" style="width:50%;">
 <h3 id="the-master-equation">The Master Equation</h3>
 <p>The fundamental relation of thermodynamics:</p>
-<p><span class="math display">\Delta U = Q - W</span></p>
-<p>The work done <span class="math inline">W</span> is positive when the
-system expands against an external pressure.</p>
+<p><span class="math display">\[\Delta U = Q - W\]</span></p>
+<p>The work done <span class="math inline">\(W\)</span> is positive when
+the system expands against an external pressure.</p>
 </div><div class="column" style="width:50%;">
 <video data-src="media/videos/sample.mp4" data-autoplay loop muted width="100%">
 </video>
@@ -683,6 +662,258 @@ system expands against an external pressure.</p>
 </div>
 </div>
 </section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="control-chart-for-machine-1-p200kpa-t338k">Control Chart for
+Machine 1 (P=200kPa, T=338K)</h3>
+<p>
+The control chart for Machine 1 shows the PartLength over time.
+</p>
+</div><div class="column" style="width:50%;">
+<iframe data-src="media/plots/control_chart_machine_1_P200_T338.html" width="100%" height="500px" style="border:none;">
+</iframe>
+<!-- Replace with actual plot image if direct html widget is not possible for qcc -->
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="process-capability-chart-for-machine-1-p200kpa-t338k">Process
+Capability Chart for Machine 1 (P=200kPa, T=338K)</h3>
+<p>
+This chart visualizes the process capability of Machine 1 against the
+specified limits.
+</p>
+</div><div class="column" style="width:50%;">
+<iframe data-src="media/plots/process_capability_machine_1_P200_T338.html" width="100%" height="500px" style="border:none;">
+</iframe>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<h3 id="cpk-for-machine-1-p200kpa-t338k">Cpk for Machine 1 (P=200kPa,
+T=338K)</h3>
+<p>```{r} # Filter data for Machine 1, Pressure = 200kPa, Temp = 338K
+data_m1 &lt;- subset(X011, Machine == 1 &amp; Pressure == 200 &amp;
+Temperature == 338)</p>
+<p>LSL = 45 USL = 55 TARGET = 50</p>
+</section>
+<section id="create-a-qcc-object-for-capability-analysis"
+class="slide level1">
+<h1>Create a qcc object for capability analysis</h1>
+<p>qcc_obj_m1_cap &lt;- qcc(data_m1$PartLength, type=“xbar.one”,
+plot=FALSE)</p>
+</section>
+<section id="process-capability-analysis" class="slide level1">
+<h1>Process Capability Analysis</h1>
+<p>pc_m1 &lt;- process.capability(qcc_obj_m1_cap, spec.limits=c(LSL,
+USL), target=TARGET, plot=FALSE)</p>
+</section>
+<section id="extract-cpk-value" class="slide level1">
+<h1>Extract Cpk value</h1>
+<p>cpk_m1 &lt;- round(pc_m1$cpk, 4)</p>
+<p>cat(“Cpk for Machine 1 (P=200kPa, T=338K):”, cpk_m1)</p>
+<pre><code>
+:::
+
+::::
+
+----
+
+### Machine 1 Capability Evaluation
+
+&lt;p&gt;To evaluate if Machine 1 is capable under these conditions, we consider the Cpk value. A Cpk value of 1.33 or higher generally indicates a capable process, while a Cpk between 1.0 and 1.33 suggests the process is adequate but may require close monitoring. A Cpk below 1.0 indicates the process is not capable.&lt;/p&gt;
+
+&lt;p&gt;Based on the calculated Cpk for Machine 1 (refer to Slide 3 for the specific value), we can determine its capability:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If Cpk is &gt;= 1.33: Machine 1 is **capable**.&lt;/li&gt;
+  &lt;li&gt;If Cpk is between 1.0 and 1.33: Machine 1 is **adequate**.&lt;/li&gt;
+  &lt;li&gt;If Cpk is &lt; 1.0: Machine 1 is **not capable**.&lt;/li&gt;
+&lt;/ul&gt;
+
+:::
+
+::::
+
+----
+
+:::: {.columns}
+::: {.column width=&quot;50%&quot;}
+### Control Chart for Machine 2 (P=200kPa, T=338K)
+
+&lt;p&gt;The control chart for Machine 2 shows the PartLength over time.&lt;/p&gt;
+
+:::
+
+::: {.column width=&quot;50%&quot;}
+&lt;iframe data-src=&#39;media/plots/control_chart_machine_2_P200_T338.html&#39; width=&#39;100%&#39; height=&#39;500px&#39; style=&#39;border:none;&#39;&gt;&lt;/iframe&gt;
+:::
+
+::::
+
+----
+
+:::: {.columns}
+::: {.column width=&quot;50%&quot;}
+### Process Capability Chart for Machine 2 (P=200kPa, T=338K)
+
+&lt;p&gt;This chart visualizes the process capability of Machine 2 against the specified limits.&lt;/p&gt;
+
+:::
+
+::: {.column width=&quot;50%&quot;}
+&lt;iframe data-src=&#39;media/plots/process_capability_machine_2_P200_T338.html&#39; width=&#39;100%&#39; height=&#39;500px&#39; style=&#39;border:none;&#39;&gt;&lt;/iframe&gt;
+:::
+
+::::
+
+----
+
+### Cpk for Machine 2 (P=200kPa, T=338K)
+
+```{r}
+# Filter data for Machine 2, Pressure = 200kPa, Temp = 338K
+data_m2 &lt;- subset(X011, Machine == 2 &amp; Pressure == 200 &amp; Temperature == 338)
+
+LSL = 45
+USL = 55
+TARGET = 50
+
+# Create a qcc object for capability analysis
+qcc_obj_m2_cap &lt;- qcc(data_m2$PartLength, type=&quot;xbar.one&quot;, plot=FALSE)
+
+# Process Capability Analysis
+pc_m2 &lt;- process.capability(qcc_obj_m2_cap, spec.limits=c(LSL, USL), target=TARGET, plot=FALSE)
+
+# Extract Cpk value
+cpk_m2 &lt;- round(pc_m2$cpk, 4)
+
+cat(&quot;Cpk for Machine 2 (P=200kPa, T=338K): &quot;, cpk_m2)</code></pre>
+<p>:::</p>
+<p>::::</p>
+</section>
+<section class="slide level1">
+
+<h3 id="machine-2-capability-evaluation">Machine 2 Capability
+Evaluation</h3>
+<p>
+To evaluate if Machine 2 is capable under these conditions, we consider
+the Cpk value. A Cpk value of 1.33 or higher generally indicates a
+capable process, while a Cpk between 1.0 and 1.33 suggests the process
+is adequate but may require close monitoring. A Cpk below 1.0 indicates
+the process is not capable.
+</p>
+<p>
+Based on the calculated Cpk for Machine 2 (refer to Slide 7 for the
+specific value), we can determine its capability:
+</p>
+<ul>
+<li>
+If Cpk is &gt;= 1.33: Machine 2 is <strong>capable</strong>.
+</li>
+<li>
+If Cpk is between 1.0 and 1.33: Machine 2 is <strong>adequate</strong>.
+</li>
+<li>
+If Cpk is &lt; 1.0: Machine 2 is <strong>not capable</strong>.
+</li>
+</ul>
+<p>:::</p>
+<p>::::</p>
+</section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="control-chart-for-machine-3-p200kpa-t338k">Control Chart for
+Machine 3 (P=200kPa, T=338K)</h3>
+<p>
+The control chart for Machine 3 shows the PartLength over time.
+</p>
+</div><div class="column" style="width:50%;">
+<iframe data-src="media/plots/control_chart_machine_3_P200_T338.html" width="100%" height="500px" style="border:none;">
+</iframe>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="process-capability-chart-for-machine-3-p200kpa-t338k">Process
+Capability Chart for Machine 3 (P=200kPa, T=338K)</h3>
+<p>
+This chart visualizes the process capability of Machine 3 against the
+specified limits.
+</p>
+</div><div class="column" style="width:50%;">
+<iframe data-src="media/plots/process_capability_machine_3_P200_T338.html" width="100%" height="500px" style="border:none;">
+</iframe>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<h3 id="cpk-for-machine-3-p200kpa-t338k">Cpk for Machine 3 (P=200kPa,
+T=338K)</h3>
+<p>```{r} # Filter data for Machine 3, Pressure = 200kPa, Temp = 338K
+data_m3 &lt;- subset(X011, Machine == 3 &amp; Pressure == 200 &amp;
+Temperature == 338)</p>
+<p>LSL = 45 USL = 55 TARGET = 50</p>
+</section>
+<section id="create-a-qcc-object-for-capability-analysis-1"
+class="slide level1">
+<h1>Create a qcc object for capability analysis</h1>
+<p>qcc_obj_m3_cap &lt;- qcc(data_m3$PartLength, type=“xbar.one”,
+plot=FALSE)</p>
+</section>
+<section id="process-capability-analysis-1" class="slide level1">
+<h1>Process Capability Analysis</h1>
+<p>pc_m3 &lt;- process.capability(qcc_obj_m3_cap, spec.limits=c(LSL,
+USL), target=TARGET, plot=FALSE)</p>
+</section>
+<section id="extract-cpk-value-1" class="slide level1">
+<h1>Extract Cpk value</h1>
+<p>cpk_m3 &lt;- round(pc_m3$cpk, 4)</p>
+<p>cat(“Cpk for Machine 3 (P=200kPa, T=338K):”, cpk_m3) ```</p>
+<p>:::</p>
+<p>::::</p>
+</section>
+<section class="slide level1">
+
+<h3 id="machine-3-capability-evaluation">Machine 3 Capability
+Evaluation</h3>
+<p>
+To evaluate if Machine 3 is capable under these conditions, we consider
+the Cpk value. A Cpk value of 1.33 or higher generally indicates a
+capable process, while a Cpk between 1.0 and 1.33 suggests the process
+is adequate but may require close monitoring. A Cpk below 1.0 indicates
+the process is not capable.
+</p>
+<p>
+Based on the calculated Cpk for Machine 3 (refer to Slide 11 for the
+specific value), we can determine its capability:
+</p>
+<ul>
+<li>
+If Cpk is &gt;= 1.33: Machine 3 is <strong>capable</strong>.
+</li>
+<li>
+If Cpk is between 1.0 and 1.33: Machine 3 is <strong>adequate</strong>.
+</li>
+<li>
+If Cpk is &lt; 1.0: Machine 3 is <strong>not capable</strong>.
+</li>
+</ul>
+<p>:::</p>
+<p>::::</p>
+</section>
 <section id="bibliography" class="slide level1">
 <h1>Bibliography</h1>
 <div id="refs" class="references csl-bib-body" role="list">
@@ -702,6 +933,7 @@ Carnot. Reflections on the motive power of fire. Annals of Physics.
   <script src="https://unpkg.com/reveal.js@4/plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@4/plugin/search/search.js"></script>
   <script src="https://unpkg.com/reveal.js@4/plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/math/math.js"></script>
 
   <script>
 
@@ -856,8 +1088,26 @@ Carnot. Reflections on the motive power of fire. Annals of Physics.
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
         // reveal.js plugins
         plugins: [
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

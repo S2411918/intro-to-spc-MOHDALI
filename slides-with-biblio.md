@@ -364,6 +364,165 @@ cat("Cpk for Machine 3 (P=200kPa, T=338K): ", cpk_m3)
 
 ::::
 
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Control Chart for Machine 1 (P=200kPa, T=338K)
+
+<p>The control chart for Machine 1 shows the PartLength over time.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/control_chart_machine_1_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Process Capability Chart for Machine 1 (P=200kPa, T=338K)
+
+<p>This chart visualizes the process capability of Machine 1 against the specified limits.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/process_capability_machine_1_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+### Cpk for Machine 1 (P=200kPa, T=338K)
+
+<p>The Cpk value for Machine 1 under these conditions is: **1.1789**</p>
+
+----
+
+### Machine 1 Capability Evaluation
+
+<p>To evaluate if Machine 1 is capable under these conditions, we consider the Cpk value. A Cpk value of 1.33 or higher generally indicates a capable process, while a Cpk between 1.0 and 1.33 suggests the process is adequate but may require close monitoring. A Cpk below 1.0 indicates the process is not capable.</p>
+
+<p>Based on the calculated Cpk for Machine 1 (1.1789), we can determine its capability:</p>
+
+<ul>
+  <li>If Cpk is >= 1.33: Machine 1 is **capable**.</li>
+  <li>If Cpk is between 1.0 and 1.33: Machine 1 is **adequate**.</li>
+  <li>If Cpk is < 1.0: Machine 1 is **not capable**.</li>
+</ul>
+
+
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Control Chart for Machine 2 (P=200kPa, T=338K)
+
+<p>The control chart for Machine 2 shows the PartLength over time.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/control_chart_machine_2_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Process Capability Chart for Machine 2 (P=200kPa, T=338K)
+
+<p>This chart visualizes the process capability of Machine 2 against the specified limits.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/process_capability_machine_2_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+### Cpk for Machine 2 (P=200kPa, T=338K)
+
+<p>The Cpk value for Machine 2 under these conditions is: **1.4182**</p>
+
+----
+
+### Machine 2 Capability Evaluation
+
+<p>To evaluate if Machine 2 is capable under these conditions, we consider the Cpk value. A Cpk value of 1.33 or higher generally indicates a capable process, while a Cpk between 1.0 and 1.33 suggests the process is adequate but may require close monitoring. A Cpk below 1.0 indicates the process is not capable.</p>
+
+<p>Based on the calculated Cpk for Machine 2 (1.4182), we can determine its capability:</p>
+
+<ul>
+  <li>If Cpk is >= 1.33: Machine 2 is **capable**.</li>
+  <li>If Cpk is between 1.0 and 1.33: Machine 2 is **adequate**.</li>
+  <li>If Cpk is < 1.0: Machine 2 is **not capable**.</li>
+</ul>
+
+
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Control Chart for Machine 3 (P=200kPa, T=338K)
+
+<p>The control chart for Machine 3 shows the PartLength over time.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/control_chart_machine_3_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+:::: {.columns}
+::: {.column width="50%"}
+### Process Capability Chart for Machine 3 (P=200kPa, T=338K)
+
+<p>This chart visualizes the process capability of Machine 3 against the specified limits.</p>
+
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/process_capability_machine_3_P200_T338.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+### Cpk for Machine 3 (P=200kPa, T=338K)
+
+<p>The Cpk value for Machine 3 under these conditions is: **1.5029**</p>
+
+----
+
+### Machine 3 Capability Evaluation
+
+<p>To evaluate if Machine 3 is capable under these conditions, we consider the Cpk value. A Cpk value of 1.33 or higher generally indicates a capable process, while a Cpk between 1.0 and 1.33 suggests the process is adequate but may require close monitoring. A Cpk below 1.0 indicates the process is not capable.</p>
+
+<p>Based on the calculated Cpk for Machine 3 (1.5029), we can determine its capability:</p>
+
+<ul>
+  <li>If Cpk is >= 1.33: Machine 3 is **capable**.</li>
+  <li>If Cpk is between 1.0 and 1.33: Machine 3 is **adequate**.</li>
+  <li>If Cpk is < 1.0: Machine 3 is **not capable**.</li>
+</ul>
+
+
 ---
 # Bibliography
 <div id="refs"></div>

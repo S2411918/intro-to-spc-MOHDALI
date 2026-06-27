@@ -1,15 +1,16 @@
 
 library(qcc)
-library(plotly)
-library(htmlwidgets)
 
 # Filter data for Machine 3, Pressure = 200kPa, Temp = 338K
 data_m3 <- subset(X011, Machine == 3 & Pressure == 200 & Temperature == 338)
 
-# Create a qcc object for Xbar chart
-qcc_obj_m3_xbar <- qcc(data_m3$PartLength, type="xbar", plot=FALSE)
+# Ensure PartLength is a numeric vector
+part_length_m3 <- as.numeric(data_m3$PartLength)
 
-# Plot the control chart
-cc_m3_plot <- plot(qcc_obj_m3_xbar, chart.all=FALSE, title=paste0("Control Chart for Machine 3 (P=200kPa, T=338K)"))
+# Create a qcc object for Individuals chart
+qcc_obj_m3_xbar <- qcc(part_length_m3, type="xbar.one", plot=FALSE)
 
-# Placeholder for saving R code
+# Save plot to PNG
+png(filename = "/content/project/media/plots/control_chart_machine_3_P200_T338.png", width = 800, height = 600)
+plot(qcc_obj_m3_xbar, chart.all=FALSE, title=paste0("Control Chart for Machine ", machine_id, " (P=", pressure_val, "kPa, T=", temperature_val, "K)"))
+dev.off()

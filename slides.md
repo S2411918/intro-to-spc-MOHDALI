@@ -611,3 +611,85 @@ is_true_difference = 'Yes'
 :::
 
 ::::
+
+----
+
+### Slide 19: ANOVA for Pressure (P) on Machine 1 Resistance
+
+:::: {.columns}
+::: {.column width="50%"}
+#### ANOVA Results for Pressure
+<p>The p-value for Pressure is <strong>0.0000</strong>.</p>
+<p>Is this factor (Pressure) significant for Machine 1's Resistance? <strong>Yes</strong></p>
+
+<p><em>(Refer to the full ANOVA table above for complete details.)</em></p>
+
+:::
+
+::: {.column width="50%"}
+```
+                   PR(>F)
+C(Pressure)  9.387812e-49
+```
+:::
+
+::::
+
+----
+
+### Slide 20: ANOVA for Temperature (T) on Machine 1 Resistance
+
+:::: {.columns}
+::: {.column width="50%"}
+#### ANOVA Results for Temperature
+<p>The p-value for Temperature is <strong>0.0000</strong>.</p>
+<p>Is this factor (Temperature) significant for Machine 1's Resistance? <strong>Yes</strong></p>
+
+<p><em>(Refer to the full ANOVA table above for complete details.)</em></p>
+:::
+
+::: {.column width="50%"}
+```
+                      PR(>F)
+C(Temperature)  1.485842e-36
+```
+:::
+
+::::
+
+----
+
+### Slide 21: ANOVA for Pressure*Temperature (P*T) Interaction on Machine 1 Resistance
+
+:::: {.columns}
+::: {.column width="50%"}
+#### ANOVA Results for Pressure*Temperature Interaction
+<p>The p-value for the Pressure*Temperature interaction is <strong>0.0000</strong>.</p>
+<p>Is this interaction significant for Machine 1's Resistance? <strong>Yes</strong></p>
+
+<p><em>(Refer to the full ANOVA table above for complete details.)</em></p>
+:::
+
+::: {.column width="50%"}
+```
+                                  PR(>F)
+C(Pressure):C(Temperature)  2.907521e-13
+```
+:::
+
+::::
+
+----
+
+### Slide 22: Interaction Plot: Pressure and Temperature on Machine 1 Resistance
+
+:::: {.columns}
+::: {.column width="50%"}
+<p>This plot visually represents how the mean PartResistance changes across different levels of Pressure and Temperature, illustrating their interaction effect. Non-parallel lines suggest an interaction.</p>
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/interaction_plot_machine1_resistance.png' width='100%' style='border:none;'>
+:::
+
+::::

@@ -523,6 +523,134 @@ cat("Cpk for Machine 3 (P=200kPa, T=338K): ", cpk_m3)
 </ul>
 
 
+----
+
+### Slide 13: T-Test Distribution Curve (P=100kPa, T=303K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<p>This plot shows the t-distribution curve for the comparison between Machine 1 and Machine 2 under the condition of Pressure = 100kPa and Temperature = 303K.</p>
+<p>The calculated t-statistic is marked, along with the critical rejection regions (red shaded areas) for a significance level of alpha = 0.05.</p>
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/t_test_P100_T303.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+### Slide 14: T-Test Results (P=100kPa, T=303K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<h4>P-value and T-statistic</h4>
+<ul>
+  <li><strong>Calculated T-statistic:</strong> -5.7985</li>
+  <li><strong>P-value:</strong> 0.0000</li>
+</ul>
+<p><em>(A p-value less than alpha=0.05 indicates statistical significance.)</em></p>
+:::
+
+::: {.column width="50%"}
+```python
+t_statistic = -5.7985
+p_value = 0.0000
+alpha = 0.05
+```
+:::
+
+::::
+
+----
+
+### Slide 15: True Difference Evaluation (P=100kPa, T=303K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<h4>Is there a true difference?</h4>
+<p>Based on the independent two-sample t-test at a significance level of alpha = 0.05:</p>
+<ul>
+  <li><strong>Conclusion:</strong> Yes</li>
+</ul>
+<p>Since the p-value (0.0000) is less than alpha (0.05), we reject the null hypothesis. This means there is statistically significant difference in the mean measurements between Machine 1 and Machine 2 under these conditions.</p>
+:::
+
+::: {.column width="50%"}
+```python
+p_value = 0.0000
+alpha = 0.05
+is_true_difference = 'Yes'
+```
+:::
+
+::::
+
+----
+
+### Slide 16: T-Test Distribution Curve (P=300kPa, T=373K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<p>This plot shows the t-distribution curve for the comparison between Machine 1 and Machine 2 under the condition of Pressure = 300kPa and Temperature = 373K.</p>
+<p>The calculated t-statistic is marked, along with the critical rejection regions (red shaded areas) for a significance level of alpha = 0.05.</p>
+:::
+
+::: {.column width="50%"}
+<img src='media/plots/t_test_P300_T373.png' width='100%' style='border:none;'>
+:::
+
+::::
+
+----
+
+### Slide 17: T-Test Results (P=300kPa, T=373K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<h4>P-value and T-statistic</h4>
+<ul>
+  <li><strong>Calculated T-statistic:</strong> 9.2357</li>
+  <li><strong>P-value:</strong> 0.0000</li>
+</ul>
+<p><em>(A p-value less than alpha=0.05 indicates statistical significance.)</em></p>
+:::
+
+::: {.column width="50%"}
+```python
+t_statistic = 9.2357
+p_value = 0.0000
+alpha = 0.05
+```
+:::
+
+::::
+
+----
+
+### Slide 18: True Difference Evaluation (P=300kPa, T=373K)
+
+:::: {.columns}
+::: {.column width="50%"}
+<h4>Is there a true difference?</h4>
+<p>Based on the independent two-sample t-test at a significance level of alpha = 0.05:</p>
+<ul>
+  <li><strong>Conclusion:</strong> Yes</li>
+</ul>
+<p>Since the p-value (0.0000) is less than alpha (0.05), we reject the null hypothesis. This means there is statistically significant difference in the mean measurements between Machine 1 and Machine 2 under these conditions.</p>
+:::
+
+::: {.column width="50%"}
+```python
+p_value = 0.0000
+alpha = 0.05
+is_true_difference = 'Yes'
+```
+:::
+
+::::
+
 ---
 # Bibliography
 <div id="refs"></div>
